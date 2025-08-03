@@ -10,7 +10,9 @@
       padding: 0;
       font-family: Arial, sans-serif;
       overflow: hidden;
+      background-color: black; /* Fallback-Hintergrund */
     }
+
     body {
       background-size: cover;
       background-position: center;
@@ -23,7 +25,7 @@
       justify-content: space-between;
       align-items: center;
       text-align: left;
-      animation: backgroundCycle 30s infinite;
+      transition: background-image 1s ease-in-out;
     }
 
     .intro {
@@ -61,16 +63,8 @@
       margin: 0.5rem;
     }
 
-    @keyframes backgroundCycle {
-      0% { background-image: url('bild1.jpg'); }
-      33% { background-image: url('bild2.jpg'); }
-      66% { background-image: url('bild3.jpg'); }
-      100% { background-image: url('bild4.jpg'); }
-    }
-
     @media (orientation: portrait) {
       body {
-        animation: portraitCycle 30s infinite;
         flex-direction: column;
         justify-content: space-between;
         text-align: center;
@@ -79,13 +73,6 @@
       .intro {
         padding: 2vh 5vw;
         max-width: 90vw;
-      }
-
-      @keyframes portraitCycle {
-        0% { background-image: url('hochkant1.jpg'); }
-        33% { background-image: url('hochkant2.jpg'); }
-        66% { background-image: url('hochkant3.jpg'); }
-        100% { background-image: url('hochkant4.jpg'); }
       }
     }
   </style>
@@ -103,13 +90,37 @@
   </div>
 
   <div class="contact">
-    <p>Telefon: <a href="tel:+491234567890" style="color: white;">----</a></p>
-    <p>Email: <a href="mailto:torben@example.com" style="color: white;">carstensenpeertorben@gmail.com</a></p>
+    <p>Telefon: <a href="tel:+4915121318051" style="color: white;">+49 151 21318051</a></p>
+    <p>Email: <a href="mailto:carstensenpeertorben@gmail.com" style="color: white;">carstensenpeertorben@gmail.com</a></p>
     <div class="socials">
       <a href="https://instagram.com/torben_photo" target="_blank">
         <img src="instagram.png" alt="Instagram" />
       </a>
     </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const landscapeImages = ['bild1.jpg', 'bild2.jpg', 'bild3.jpg', 'bild4.jpg'];
+      const portraitImages = ['hochkant1.jpg', 'hochkant2.jpg', 'hochkant3.jpg', 'hochkant4.jpg'];
+      const isPortrait = window.matchMedia(\"(orientation: portrait)\").matches;
+      const images = isPortrait ? portraitImages : landscapeImages;
+      let index = 0;
+
+      // Bilder vorladen
+      images.forEach(src => {
+        const img = new Image();
+        img.src = src;
+      });
+
+      function changeBackground() {
+        document.body.style.backgroundImage = `url('${images[index]}')`;
+        index = (index + 1) % images.length;
+      }
+
+      changeBackground();
+      setInterval(changeBackground, 10000); // alle 10 Sekunden
+    });
+  </script>
 </body>
 </html>
