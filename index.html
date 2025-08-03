@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Torben Carstensen - Fotograf</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+    body {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      width: 100vw;
+      color: white;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      animation: backgroundCycle 30s infinite;
+    }
+
+    .intro {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 4vw;
+      max-width: 50vw;
+    }
+
+    h1 {
+      font-size: 3rem;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+
+    .description {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+
+    .contact {
+      position: absolute;
+      bottom: 2vh;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .socials img {
+      width: 32px;
+      height: 32px;
+      margin: 0.5rem;
+    }
+
+    @keyframes backgroundCycle {
+      0% { background-image: url('bild1.jpg'); }
+      33% { background-image: url('bild2.jpg'); }
+      66% { background-image: url('bild3.jpg'); }
+      100% { background-image: url('bild4.jpg'); }
+    }
+
+    @media (orientation: portrait) {
+      body {
+        animation: portraitCycle 30s infinite;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+      }
+
+      .intro {
+        padding: 2vh 5vw;
+        max-width: 90vw;
+      }
+
+      @keyframes portraitCycle {
+        0% { background-image: url('hochkant1.jpg'); }
+        33% { background-image: url('hochkant2.jpg'); }
+        66% { background-image: url('hochkant3.jpg'); }
+        100% { background-image: url('hochkant4.jpg'); }
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="intro">
+    <h1>Torben Carstensen</h1>
+    <div class="description">
+      <p>Ich bin Torben, Fotograf aus Leidenschaft.<br>
+      Spezialisiert auf Hochzeitsfotografie,<br>
+      Porträts und visuelle Erzählung.<br>
+      Mit einem Auge für Licht und Emotion<br>
+      schaffe ich Bilder, die berühren.</p>
+    </div>
+  </div>
+
+  <div class="contact">
+    <p>Telefon: <a href="tel:+491234567890" style="color: white;">----</a></p>
+    <p>Email: <a href="mailto:torben@example.com" style="color: white;">carstensenpeertorben@gmail.com</a></p>
+    <div class="socials">
+      <a href="https://instagram.com/torben_photo" target="_blank">
+        <img src="instagram.png" alt="Instagram" />
+      </a>
+    </div>
+  </div>
+</body>
+</html>
